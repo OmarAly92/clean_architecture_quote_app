@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quotes/config/themes/app_themes.dart';
 
-import 'core/utils/app_colors.dart';
 import 'core/utils/app_strings.dart';
 import 'features/random_quotes/presentation/ui/quotes_view.dart';
 
@@ -16,10 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: AppStrings.appName,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: AppColors.primary,
-        useMaterial3: true,
-      ),
+      theme: AppThemes.light(),
       home: const QuotesView(),
     );
   }
