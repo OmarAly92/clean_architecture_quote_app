@@ -17,6 +17,8 @@ dependencies:
   flutter_bloc: ^8.1.5
   # A Dart package that helps to implement value based equality without needing to explicitly override == and hashCode.
   equatable: ^2.0.5
+  # Easily create toast messages in single line of code
+  fluttertoast: ^8.2.4
 
 
 

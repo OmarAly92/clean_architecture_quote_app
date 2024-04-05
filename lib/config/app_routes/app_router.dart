@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quotes/core/utils/app_strings.dart';
 
 import 'routes.dart';
 
@@ -16,7 +17,7 @@ class AppRouter {
       builder: (context) {
         return const Scaffold(
           body: Center(
-            child: Text('No Route Found'),
+            child: Text(AppStrings.noRouteFound),
           ),
         );
       },

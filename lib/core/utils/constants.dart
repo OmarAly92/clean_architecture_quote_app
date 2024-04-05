@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:quotes/core/utils/app_colors.dart';
 
 abstract class Constants {
-  static void showErrorDialog(BuildContext context, {required String message}) {
+  static void showErrorDialog(
+    BuildContext context, {
+    required String message,
+  }) {
     showDialog(
       context: context,
       builder: (context) {
@@ -28,6 +33,20 @@ abstract class Constants {
           ],
         );
       },
+    );
+  }
+
+  static void showToast({
+    required String message,
+    ToastGravity? gravity,
+    Color? color,
+    Color? textColor,
+  }) {
+    Fluttertoast.showToast(
+      msg: message,
+      gravity: gravity ?? ToastGravity.BOTTOM,
+      backgroundColor: color ?? AppColors.primary,
+      textColor: textColor,
     );
   }
 }
