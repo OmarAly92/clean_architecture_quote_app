@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quotes/config/themes/app_themes.dart';
 
+import 'config/themes/app_themes.dart';
+import 'core/app_routes/app_router.dart';
 import 'core/utils/app_strings.dart';
-import 'features/random_quotes/presentation/ui/quotes_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       title: AppStrings.appName,
       debugShowCheckedModeBanner: false,
       theme: AppThemes.light(),
-      home: const QuotesView(),
+      onGenerateRoute: AppRouter.generateRoute,
+      // home: const QuotesView(),
     );
   }
 }
