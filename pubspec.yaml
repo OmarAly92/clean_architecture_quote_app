@@ -21,6 +21,8 @@ dependencies:
   fluttertoast: ^8.2.4
   # Flutter widgets for easily adding gaps inside Flex widgets such as Columns and Rows or scrolling views.
   gap: ^3.0.1
+  # Functional Programming in Dart. Purify your Dart code using efficient immutable data structures, monads, lenses and other FP tools
+  dartz: ^0.10.1
 
 
 

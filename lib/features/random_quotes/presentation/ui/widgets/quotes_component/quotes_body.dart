@@ -20,8 +20,7 @@ class QuotesBody extends StatelessWidget {
               author: 'Bill Gates',
             ),
           ),
-          const Gap(20),
-          const Gap(20),
+          const Gap(40),
           FloatingActionButton(
             onPressed: () {},
             child: const Icon(
