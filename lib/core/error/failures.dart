@@ -7,7 +7,7 @@ class ServerFailure extends Failures {
   List<Object> get props => [];
 }
 
-class CacheFailure extends Failures {
+class LocalFailure extends Failures {
   @override
   List<Object> get props => [];
 }
