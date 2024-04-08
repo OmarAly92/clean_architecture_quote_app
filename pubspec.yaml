@@ -12,7 +12,7 @@ dependencies:
   # Default icons asset for Cupertino widgets based on Apple styled icons
   cupertino_icons: ^1.0.6
   # A powerful HTTP networking package, supports Interceptors, Aborting and canceling a request
-  dio: ^5.4.2+1
+  #  dio: ^5.4.2+1
   # state management Bloc (Business Logic Component) design pattern. Built to be used with the bloc state management package
   flutter_bloc: ^8.1.5
   # A Dart package that helps to implement value based equality without needing to explicitly override == and hashCode.
@@ -27,7 +27,8 @@ dependencies:
   internet_connection_checker_plus: ^2.3.0
   # for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android.
   shared_preferences: ^2.2.2
-
+  # A composable, multi-platform, Future-based API for HTTP requests.
+  http: ^1.2.1
 
 
 
