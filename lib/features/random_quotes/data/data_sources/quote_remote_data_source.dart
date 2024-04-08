@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:quotes/core/api/end_points.dart';
 import 'package:quotes/core/error/exceptions.dart';
+import 'package:quotes/core/utils/app_strings.dart';
 import 'package:quotes/features/random_quotes/data/models/quote_model.dart';
 
 abstract class QuoteRemoteDataSource {
@@ -19,7 +20,7 @@ class QuoteRemoteDataSourceImp implements QuoteRemoteDataSource {
     final randomQuoteUrl = Uri.parse('${EndPoints.baseUrl}${EndPoints.randomQuotes}');
     final response = await client.get(
       randomQuoteUrl,
-      headers: {'Content-Type': 'application/json'},
+      headers: {AppStrings.contentType: AppStrings.applicationJson},
     );
     if (response.statusCode == 200) {
       return QuoteModel.fromJson(jsonDecode(response.body));
