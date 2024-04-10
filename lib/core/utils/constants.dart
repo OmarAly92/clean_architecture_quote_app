@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:quotes/core/error/failures.dart';
 import 'package:quotes/core/utils/app_colors.dart';
+import 'package:quotes/core/utils/app_strings.dart';
 
-abstract class Constants {
+abstract class AppConstants {
   static void showErrorDialog(
     BuildContext context, {
     required String message,
@@ -48,5 +50,16 @@ abstract class Constants {
       backgroundColor: color ?? AppColors.primary,
       textColor: textColor,
     );
+  }
+
+  static mapFailureMsg(Failures failure) {
+    switch (failure.runtimeType) {
+      case ServerFailure _:
+        return AppStrings.serverFailure;
+      case LocalFailure _:
+        return AppStrings.localFailure;
+      default:
+        return AppStrings.unexpectedError;
+    }
   }
 }

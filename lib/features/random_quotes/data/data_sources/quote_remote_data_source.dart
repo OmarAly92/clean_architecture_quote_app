@@ -19,8 +19,8 @@ class QuoteRemoteDataSourceImp implements QuoteRemoteDataSource {
   Future<QuoteModel> getRandomQuote() async {
     final randomQuoteUrl = Uri.parse('${EndPoints.baseUrl}${EndPoints.randomQuotes}');
     final response = await client.get(
-      randomQuoteUrl,
       headers: {AppStrings.contentType: AppStrings.applicationJson},
+      randomQuoteUrl,
     );
     if (response.statusCode == 200) {
       return QuoteModel.fromJson(jsonDecode(response.body));
