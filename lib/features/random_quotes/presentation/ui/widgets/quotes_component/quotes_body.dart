@@ -5,6 +5,8 @@ import 'package:quotes/features/random_quotes/data/models/quotes_content_model.d
 import 'package:quotes/features/random_quotes/presentation/logic/random_quote_cubit.dart';
 import 'package:quotes/features/random_quotes/presentation/ui/widgets/quotes_component/quotes_content.dart';
 
+import '../../../../../../core/widgets/error_widget.dart';
+
 class QuotesBody extends StatefulWidget {
   const QuotesBody({super.key});
 
@@ -25,7 +27,6 @@ class _QuotesBodyState extends State<QuotesBody> {
 
   @override
   Widget build(BuildContext context) {
-    // return ErrorWidget('exception');
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -43,7 +44,7 @@ class _QuotesBodyState extends State<QuotesBody> {
                   ),
                 );
               } else if (state is GetRandomQuoteFailure) {
-                return Text(state.failureMessage);
+                return AppErrorWidget(failureMsg: state.failureMessage);
               } else {
                 return const Text('unKnown state');
               }

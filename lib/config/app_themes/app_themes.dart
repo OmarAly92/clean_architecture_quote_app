@@ -30,6 +30,15 @@ abstract class AppThemes {
           fontWeight: FontWeight.w500,
         ),
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: AppColors.primary,
+          textStyle: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: AppColors.primary,
         elevation: 0,
