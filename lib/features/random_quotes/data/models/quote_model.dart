@@ -10,12 +10,22 @@ class QuoteModel extends QuoteEntity {
   });
 
   factory QuoteModel.fromJson(Map<String, dynamic> json) => QuoteModel(
-        id: json["_id"] ?? 0,
-        author: json["author"] ?? '',
-        content: json["content"] ?? '',
-        tags: List<String>.from((json["tags"] ?? []).map((x) => x)),
-        length: json["length"] ?? 0,
+        id: json['_id'] ?? '',
+        author: json['author'] ?? '',
+        content: json['content'] ?? '',
+        tags: List<String>.from((json['tags'] ?? []).map((x) => x)),
+        length: json['length'] ?? 0,
       );
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'author': author,
+      'content': content,
+      'tags': tags,
+      'length': length,
+    };
+  }
 
   @override
   List<Object> get props => [

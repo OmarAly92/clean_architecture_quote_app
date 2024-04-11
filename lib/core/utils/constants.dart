@@ -5,7 +5,7 @@ import 'package:quotes/core/error/failures.dart';
 import 'package:quotes/core/utils/app_colors.dart';
 import 'package:quotes/core/utils/app_strings.dart';
 
-abstract class AppConstants {
+class AppConstants {
   static void showErrorDialog(
     BuildContext context, {
     required String message,
@@ -54,9 +54,9 @@ abstract class AppConstants {
 
   static mapFailureMsg(Failures failure) {
     switch (failure.runtimeType) {
-      case ServerFailure _:
+      case const (ServerFailure):
         return AppStrings.serverFailure;
-      case LocalFailure _:
+      case const (LocalFailure):
         return AppStrings.localFailure;
       default:
         return AppStrings.unexpectedError;

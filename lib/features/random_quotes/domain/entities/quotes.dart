@@ -1,12 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 class QuoteEntity extends Equatable {
-  final String id;
-  final String author;
-  final String content;
-  final List<String> tags;
-  final int length;
-
   const QuoteEntity({
     required this.id,
     required this.author,
@@ -14,6 +8,12 @@ class QuoteEntity extends Equatable {
     required this.tags,
     required this.length,
   });
+
+  final String id;
+  final String author;
+  final String content;
+  final List<String> tags;
+  final int length;
 
   @override
   List<Object> get props => [id, author, content, tags, length];

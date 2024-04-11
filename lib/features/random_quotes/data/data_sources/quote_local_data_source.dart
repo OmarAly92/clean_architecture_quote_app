@@ -21,7 +21,7 @@ class QuoteLocalDataSourceImp implements QuoteLocalDataSource {
   Future<QuoteModel> getLastRandomQuote() async {
     final jsonQuote = sharedPreferences.getString(AppStrings.cachedRandomQuote);
     if (jsonQuote != null) {
-      final localCacheRandomQuote = QuoteModel.fromJson(json.decode(jsonQuote));
+      final localCacheRandomQuote = QuoteModel.fromJson(jsonDecode(jsonQuote));
       return localCacheRandomQuote;
     } else {
       throw LocalException();
@@ -30,6 +30,8 @@ class QuoteLocalDataSourceImp implements QuoteLocalDataSource {
 
   @override
   Future<void> cacheQuote(QuoteModel quote) {
-    return sharedPreferences.setString(AppStrings.cachedRandomQuote, json.encode(quote));
+    final Map<String, dynamic> quoteMap = quote.toJson();
+    final String jsonQuote = jsonEncode(quoteMap);
+    return sharedPreferences.setString(AppStrings.cachedRandomQuote, jsonQuote);
   }
 }

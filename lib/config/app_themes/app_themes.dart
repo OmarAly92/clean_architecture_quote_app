@@ -8,6 +8,7 @@ abstract class AppThemes {
   static ThemeData light() {
     return ThemeData(
       primaryColor: AppColors.primary,
+      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
       hintColor: AppColors.hint,
       fontFamily: AppStrings.fontFamily,
       useMaterial3: true,
