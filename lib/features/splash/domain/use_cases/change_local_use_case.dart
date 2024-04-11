@@ -4,12 +4,12 @@ import 'package:quotes/core/use_cases/use_case.dart';
 import 'package:quotes/features/splash/domain/repositories/lang_repository.dart';
 
 class ChangeLocalUseCase implements UseCase<bool, String> {
-  ChangeLocalUseCase(this.langRepository);
+  ChangeLocalUseCase(this._langRepository);
 
-  final LangRepository langRepository;
+  final LangRepository _langRepository;
 
   @override
   Future<Either<Failures, bool>> call(String langCode) async {
-    return await langRepository.changeLang(langCode);
+    return await _langRepository.changeLang(langCode);
   }
 }

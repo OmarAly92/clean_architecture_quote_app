@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/utils/app_strings.dart';
+import '../../../../config/app_locale/app_localizations.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../splash/presentation/logic/local_cubit.dart';
 import '../logic/random_quote_cubit.dart';
 import 'widgets/quotes_component/quotes_body.dart';
 
@@ -19,9 +21,22 @@ class QuotesView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text(
-            AppStrings.appName,
-            style: TextStyle(
+          leading: IconButton(
+            onPressed: () {
+              if (AppLocalizations.of(context)!.isEnLocale) {
+                BlocProvider.of<LocaleCubit>(context).toArabic();
+              } else {
+                BlocProvider.of<LocaleCubit>(context).toEnglish();
+              }
+            },
+            icon: Icon(
+              Icons.translate_rounded,
+              color: AppColors.primary,
+            ),
+          ),
+          title: Text(
+            AppLocalizations.of(context)!.translate('app_name')!,
+            style: const TextStyle(
               fontWeight: FontWeight.w600,
             ),
           ),

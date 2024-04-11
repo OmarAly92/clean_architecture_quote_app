@@ -11,6 +11,11 @@ import 'package:quotes/features/random_quotes/data/repositories/quote_repository
 import 'package:quotes/features/random_quotes/domain/repositories/quote_repository.dart';
 import 'package:quotes/features/random_quotes/domain/use_cases/get_random_quote.dart';
 import 'package:quotes/features/random_quotes/presentation/logic/random_quote_cubit.dart';
+import 'package:quotes/features/splash/data/data_sources/lang_local_data_source.dart';
+import 'package:quotes/features/splash/data/repositories/lang_repository_imp.dart';
+import 'package:quotes/features/splash/domain/repositories/lang_repository.dart';
+import 'package:quotes/features/splash/domain/use_cases/change_local_use_case.dart';
+import 'package:quotes/features/splash/domain/use_cases/get_saved_lang_use_case.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance;
@@ -22,13 +27,17 @@ Future<void> inIt() async {
 
   // Use Cases
   sl.registerLazySingleton<GetRandomQuoteUseCases>(() => GetRandomQuoteUseCases(sl()));
+  sl.registerLazySingleton<GetSavedLangUseCase>(() => GetSavedLangUseCase(sl()));
+  sl.registerLazySingleton<ChangeLocalUseCase>(() => ChangeLocalUseCase(sl()));
 
   // Repository
   sl.registerLazySingleton<QuoteRepository>(() => QuoteRepositoryImp(sl(), sl(), sl()));
+  sl.registerLazySingleton<LangRepository>(() => LangRepositoryImp(sl()));
 
   // Data Sources
   sl.registerLazySingleton<QuoteLocalDataSource>(() => QuoteLocalDataSourceImp(sl()));
   sl.registerLazySingleton<QuoteRemoteDataSource>(() => QuoteRemoteDataSourceImp(sl()));
+  sl.registerLazySingleton<LangLocalDataSource>(() => LangLocalDataSourceImp(sl()));
 
   /// Core
   sl.registerLazySingleton<NetworkStatus>(() => NetworkStatusImp(sl()));
