@@ -5,11 +5,21 @@ import 'package:quotes/features/random_quotes/presentation/logic/random_quote_cu
 import 'package:quotes/features/random_quotes/presentation/ui/quotes_view.dart';
 
 import '../../core/utils/service_locator.dart';
+import '../../features/splash/presentation/ui/splash_view.dart';
 import 'routes.dart';
 
 class AppRouter {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.splashView:
+        return MaterialPageRoute(
+          builder: (context) {
+            return BlocProvider(
+              create: (context) => QuoteCubit(sl()),
+              child: const SplashView(),
+            );
+          },
+        );
       case Routes.quotesView:
         return MaterialPageRoute(
           builder: (context) {

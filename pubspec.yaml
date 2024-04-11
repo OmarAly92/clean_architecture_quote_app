@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   # Default icons asset for Cupertino widgets based on Apple styled icons
   cupertino_icons: ^1.0.6
   # A powerful HTTP networking package, supports Interceptors, Aborting and canceling a request
@@ -54,7 +56,11 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/1x/
+    - lang/ar.json
+    - lang/en.json
 
+  
   fonts:
     - family: Tajawal
       fonts:

@@ -12,10 +12,6 @@ void main() async {
   await locator.inIt();
   Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
-
-  // BlocOverrides.runZoned(() {
-  //   runApp(const MyApp());
-  // }, blocObserver: AppBlocObserver());
 }
 
 class MyApp extends StatelessWidget {
