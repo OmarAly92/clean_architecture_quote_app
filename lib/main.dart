@@ -17,6 +17,8 @@ void main() async {
   runApp(const MyApp());
 }
 
+GlobalKey<NavigatorState>? navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: AppStrings.appName,
             debugShowCheckedModeBanner: false,
+            navigatorKey: navigatorKey,
             theme: AppThemes.light(),
             supportedLocales: AppLocalizationsSetup.supportedLocales,
             localeResolutionCallback: AppLocalizationsSetup.localeResolutionCallback,

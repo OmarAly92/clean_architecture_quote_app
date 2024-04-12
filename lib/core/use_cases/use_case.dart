@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import '../error/failures.dart';
+import '../error/error_handler.dart';
 
 abstract class UseCase<Type, Params> {
   Future<Either<Failures, Type>> call(Params params);

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:quotes/core/error/exceptions.dart';
 import 'package:quotes/features/random_quotes/data/models/quote_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../core/error/failures.dart';
 import '../../../../core/utils/app_strings.dart';
 
 abstract class QuoteLocalDataSource {

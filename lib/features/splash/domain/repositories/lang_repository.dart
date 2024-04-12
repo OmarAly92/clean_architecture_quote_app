@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:quotes/core/error/failures.dart';
+
+import '../../../../core/error/error_handler.dart';
 
 abstract class LangRepository {
   Future<Either<Failures, bool>> changeLang(String langCode);

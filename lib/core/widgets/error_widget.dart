@@ -20,7 +20,7 @@ class AppErrorWidget extends StatelessWidget {
           size: 250,
         ),
         Text(
-          failureMsg ?? AppLocalizations.of(context)!.translate('something_went_wrong')!,
+          AppLocalizations.of(context)!.translate(failureMsg ?? 'something_went_wrong') ?? failureMsg ?? 'nul',
           style: const TextStyle(
             fontSize: 23,
             fontWeight: FontWeight.bold,

@@ -9,7 +9,7 @@ import 'package:quotes/core/api/app_interceptors.dart';
 import 'package:quotes/core/api/end_points.dart';
 import 'package:quotes/core/api/status_code.dart';
 
-import '../error/exceptions.dart';
+import '../error/failures.dart';
 import '../utils/service_locator.dart';
 
 class DioConsumer implements ApiConsumer {
@@ -38,12 +38,8 @@ class DioConsumer implements ApiConsumer {
 
   @override
   Future get(String path, {Map<String, dynamic>? queryParameters}) async {
-    try {
-      final response = await client.get(path, queryParameters: queryParameters);
-      return _handleResponseAsJson(response);
-    } on DioException catch (error) {
-      _handleDioError(error);
-    }
+    final response = await client.get(path, queryParameters: queryParameters);
+    return _handleResponseAsJson(response);
   }
 
   @override
@@ -53,36 +49,24 @@ class DioConsumer implements ApiConsumer {
     Map<String, dynamic>? queryParameters,
     bool formDataIsEnabled = false,
   }) async {
-    try {
-      final response = await client.post(
-        path,
-        queryParameters: queryParameters,
-        data: formDataIsEnabled ? FormData.fromMap(body!) : body,
-      );
-      return _handleResponseAsJson(response);
-    } on DioException catch (error) {
-      _handleDioError(error);
-    }
+    final response = await client.post(
+      path,
+      queryParameters: queryParameters,
+      data: formDataIsEnabled ? FormData.fromMap(body!) : body,
+    );
+    return _handleResponseAsJson(response);
   }
 
   @override
   Future put(String path, {Map<String, dynamic>? body, Map<String, dynamic>? queryParameters}) async {
-    try {
-      final response = await client.put(path, queryParameters: queryParameters, data: body);
-      return _handleResponseAsJson(response);
-    } on DioException catch (error) {
-      _handleDioError(error);
-    }
+    final response = await client.put(path, queryParameters: queryParameters, data: body);
+    return _handleResponseAsJson(response);
   }
 
   @override
   Future delete(String path, {Map<String, dynamic>? queryParameters}) async {
-    try {
-      final response = await client.delete(path, queryParameters: queryParameters);
-      return _handleResponseAsJson(response);
-    } on DioException catch (error) {
-      _handleDioError(error);
-    }
+    final response = await client.delete(path, queryParameters: queryParameters);
+    return _handleResponseAsJson(response);
   }
 
   dynamic _handleResponseAsJson(Response<dynamic> response) {
@@ -90,7 +74,7 @@ class DioConsumer implements ApiConsumer {
     return responseJson;
   }
 
-  dynamic _handleDioError(DioException error) {
+  ServerException handleDioError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:

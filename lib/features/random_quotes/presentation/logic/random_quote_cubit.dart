@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quotes/core/use_cases/use_case.dart';
-import 'package:quotes/core/utils/constants.dart';
-
 import '../../domain/entities/quotes.dart';
 import '../../domain/use_cases/get_random_quote.dart';
 
@@ -18,7 +16,7 @@ class QuoteCubit extends Cubit<RandomQuoteState> {
     final result = await _getRandomQuoteUseCases(NoParams());
     result.fold(
       (failure) {
-        emit(GetRandomQuoteFailure(AppConstants.mapFailureMsg(failure)));
+        emit(GetRandomQuoteFailure(failure.message));
       },
       (quote) {
         emit(GetRandomQuoteSuccess(quote));

@@ -5,6 +5,8 @@ import 'package:quotes/core/error/failures.dart';
 import 'package:quotes/core/utils/app_colors.dart';
 import 'package:quotes/core/utils/app_strings.dart';
 
+import '../../config/app_locale/app_localizations.dart';
+
 class AppConstants {
   static void showErrorDialog(
     BuildContext context, {
@@ -52,14 +54,17 @@ class AppConstants {
     );
   }
 
-  static mapFailureMsg(Failures failure) {
-    switch (failure.runtimeType) {
-      case const (ServerFailure):
-        return AppStrings.serverFailure;
-      case const (LocalFailure):
-        return AppStrings.localFailure;
-      default:
-        return AppStrings.unexpectedError;
+  static String mapFailureMsg(Failure failure) {
+    if (failure is ServerException) {
+      return failure.message ?? AppStrings.unexpectedError;
+    } else if (failure is LocalFailure) {
+      return AppStrings.localFailure;
+    } else {
+      return AppStrings.unexpectedError;
     }
   }
+}
+
+String translate(BuildContext context, String key) {
+  return AppLocalizations.of(context)!.translate(key)!;
 }
